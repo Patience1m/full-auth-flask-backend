@@ -2,7 +2,6 @@ from flask import Flask
 from config.config import CONFIGS
 from extension import bcrypt, db, migrate
 
-
 def create_app(env_name="development", overrides=None):
     app = Flask(__name__)
     app.config.from_object(CONFIGS[env_name])
