@@ -13,6 +13,8 @@ def create_app(env_name="development", overrides=None):
     from models.note import Note
     from models.user import User
     from controllers.auth_routes import auth_bp
+    from controllers.note_routes import notes_bp
     app.register_blueprint(auth_bp)
+    app.register_blueprint(notes_bp)
 
     return app
