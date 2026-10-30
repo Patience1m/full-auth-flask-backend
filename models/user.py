@@ -1,16 +1,11 @@
 from sqlalchemy.orm import validates
-
 from extension import bcrypt, db
 
-
 class User(db.Model):
-    __tablename__ = "users"  # Always explicit
-
+    __tablename__ = "users"
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(50), unique=True, nullable=False)
-    password_hash = db.Column(db.String(128), nullable=False)  # never the plain password
-
-    # one user owns many notes; deleting the user deletes their notes
+    password_hash = db.Column(db.String(128), nullable=False)
     notes = db.relationship(
         "Note",
         back_populates="user",
@@ -36,4 +31,4 @@ class User(db.Model):
         return f"<User {self.id}: {self.username}>"
 
     def to_dict(self):
-        return {"id": self.id, "username": self.username}  # the hash is never exposed
+        return {"id": self.id, "username": self.username}

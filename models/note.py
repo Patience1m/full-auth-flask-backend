@@ -1,17 +1,12 @@
 from sqlalchemy.orm import validates
-
 from extension import db
 
-
 class Note(db.Model):
-    __tablename__ = "notes"  # Always explicit
-
+    __tablename__ = "notes"
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100), nullable=False)
     content = db.Column(db.Text, nullable=False)
     created_at = db.Column(db.DateTime, server_default=db.func.now(), nullable=False)
-
-    # relationship column: every note belongs to exactly one user
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
     user = db.relationship("User", back_populates="notes")
 
