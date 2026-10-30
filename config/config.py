@@ -9,7 +9,7 @@ class BaseConfig:
 
 class DevelopmentConfig(BaseConfig):
     DEBUG = True
-    SQLALCHEMY_DATABASE_URI = "sqlite:///productivity.db"  # lands in instance/
+    SQLALCHEMY_DATABASE_URI = "sqlite:///productivity.db"
 
 
 class TestingConfig(BaseConfig):
